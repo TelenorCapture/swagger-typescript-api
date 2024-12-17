@@ -484,7 +484,7 @@ export enum RequestContentKind {
   JSON = "JSON",
   URL_ENCODED = "URL_ENCODED",
   FORM_DATA = "FORM_DATA",
-  IMAGE = "IMAGE",
+  BLOB = "BLOB",
   OTHER = "OTHER",
   TEXT = "TEXT",
 }

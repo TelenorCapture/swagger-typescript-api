@@ -24,7 +24,7 @@ const CONTENT_KIND = {
   JSON: "JSON",
   URL_ENCODED: "URL_ENCODED",
   FORM_DATA: "FORM_DATA",
-  IMAGE: "IMAGE",
+  BLOB: "BLOB",
   OTHER: "OTHER",
   TEXT: "TEXT",
 };
@@ -296,8 +296,13 @@ export class SchemaRoutes {
       return CONTENT_KIND.FORM_DATA;
     }
 
-    if (contentTypes.some((contentType) => contentType.includes("image/"))) {
-      return CONTENT_KIND.IMAGE;
+    if (
+      contentTypes.some((contentType) => contentType.includes("image/")) ||
+      contentTypes.some((contentType) =>
+        contentType.includes("application/octet-stream"),
+      )
+    ) {
+      return CONTENT_KIND.BLOB;
     }
 
     if (contentTypes.some((contentType) => contentType.startsWith("text/"))) {
